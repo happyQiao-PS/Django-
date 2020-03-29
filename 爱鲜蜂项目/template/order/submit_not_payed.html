@@ -1,0 +1,50 @@
+{% extends "base_user.html" %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "/projectfile/order/css/order.css" %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "projectfile/order/js/submit.js" %}"></script>
+{% endblock %}
+
+{% block ext_content %}
+    {{ block.super }}
+    <div id="box_class">
+        <ol>
+            {% for order in orders %}
+                <li class="border_li">
+                    <h4>订单编号：<span>{{ order.id }}</span><br><span>下单时间：{{ order.o_time }}</span></h4>
+                    <ul>
+                        {% for foo in order.axf_ordergoods_set.all %}
+                            <li class="menuList">
+                                <a href="#">
+                                    <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1805533792,4193913775&fm=26&gp=0.jpg"/>
+                                    <p>{{ foo.og_goods.productlongname }}</p>
+                                    <p>{{ foo.og_goods.price }}元</p>
+                                </a>
+                                <section>
+                                    <span>{{ foo.og_num }}</span>
+                                </section>
+                            </li>
+                        {% endfor %}
+                    {% ifequal title "未收货" %}
+                        <span class="order_after_pay_statu">订单状态:已付款</span>
+                        <span class="order_after_pay_money">订单总价：{{ order.o_price }}</span>
+                        {% else %}
+                        <button orderid="{{ order.id }}" class="btn btn-block btn-success">支付{{ order.o_price }}</button>
+                    {% endifequal %}
+
+                    </ul>
+                </li>
+                <br>
+                <br>
+            {% endfor %}
+
+        </ol>
+
+    </div>
+{% endblock %}

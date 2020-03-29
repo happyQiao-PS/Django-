@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+{% for student in student %}
+    <h1>{{ student.s_name }}的信息</h1>
+    <hr>
+        <ul>
+            <li>性别:{{ student.s_sex }}</li>
+            <li>年龄:{{ student.s_age }}</li>
+            <li>爱好:{{ student.s_hobby }}</li>
+        </ul>
+    <hr>
+    <h3><a href="{% url "home:deletestudent" student.id %}">删除这个学生</a></h3>
+    <h4><a href="{% url "home:showgradestudents" student.s_grade.id %}">返回上一层</a></h4>
+{% endfor %}
+</body>
+</html>

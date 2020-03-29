@@ -1,0 +1,36 @@
+{% extends "base_user.html" %}
+{% load static %}
+
+{#{% block ext_css %}#}
+{#    {{ block.super }}#}
+{#    <link rel="stylesheet" href="{% static "projectfile/user/css/base_user.css" %}">#}
+{#{% endblock %}#}
+
+{% block ext_js %}
+    {{ block.super }}
+    {% if key %}
+        <script>
+            $(function () {
+                $(".login-status").show();
+            })
+        </script>
+    {% endif %}
+    <script type="text/javascript" src="{% static "projectfile/user/js/login.js" %}"></script>
+{% endblock %}
+
+{% block ext_content %}
+    {{ block.super }}
+    <form id="form-register"  method="post" action="{% url "axf:login" %}" onsubmit="return check_login()" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username_input">用户名/邮箱</label>
+            <span class="login-status">提供的凭证有误！</span>
+            <input name="username" id="username_info" type="text" class="form-control" id="username_input" placeholder="请输入用户名或邮箱">
+        </div>
+        <div class="form-group">
+            <label for="password_input">密码</label>
+            <input name="password" type="password" class="form-control" id="password_input" placeholder="请输入你的密码">
+        </div>
+        <button type="submit" class="btn btn-info">登录</button>
+    </form>
+{% endblock %}

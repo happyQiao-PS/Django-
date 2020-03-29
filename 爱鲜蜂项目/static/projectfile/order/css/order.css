@@ -1,0 +1,78 @@
+#box_class{
+    margin-top: 2.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.menuList {
+  border-bottom: 0.04rem solid lightgrey;
+  height: 2.5rem;
+  position: relative; }
+
+.menuList > a {
+  width: 84%;
+  display: inline-block;
+  font-size: 0.4rem;
+  line-height: 1rem;
+}
+
+.menuList > a > img {
+  margin-top: 0.25rem;
+  width: 25%;
+  height: 100%;
+  float: left; }
+
+.menuList > a > p {
+  width: 75%;
+  height: 1rem;
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.menuList > a > p{
+  padding-left: 0.25rem;
+}
+
+.menuList > section {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  height: 0.75rem;
+  border-radius: 1rem; }
+
+.menuList > section > button {
+  background: white;
+  border: 1px solid orange;
+  border-radius: 1111px;
+  color: red;
+  display: inline-block;
+  text-align: center;
+  line-height: 0.65rem;
+  font-weight: 900;
+  width: 0.75rem;
+  height: 0.75rem; }
+
+.menuList > section > span {
+  display: inline-block;
+  width: 0.5rem;
+  text-align: center;
+  line-height: 0.5rem;
+  font-size: 0.4rem;
+}
+
+section>span:before{
+  content: "x";
+}
+
+.presentPrice:before {
+  content: "¥";
+  font-size: 0.33rem; }
+
+.order_after_pay_money{
+  float: right;
+  color: orangered;
+}
+.order_after_pay_statu{
+  color: orangered;
+}

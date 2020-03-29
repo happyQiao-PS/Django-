@@ -1,0 +1,45 @@
+#header-user{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height:2rem;
+    background-color: #5bc0de;
+}
+#form-register{
+    position: relative;
+    top: 2.5rem;
+    margin: 0.1rem 0.5rem;
+}
+#form-register>button{
+    width: 100%;
+    padding: 0.1rem 3rem;
+}
+.login-status{
+    color: red;
+    display: none;
+}
+#form-register>div>span{
+    display: none;
+}
+/*ok的意思就是该用户不可以使用是正确的！*/
+.username_OK{
+    color: green;
+}
+.username_NO{
+    color: red;
+}
+.email_OK{
+    color: green;
+}
+.email_NO{
+    color: red;
+}
+#password_OK{
+    color: green;
+}
+#password_NO{
+    color: red;
+}
+.icon_OK{
+    color: red;
+}

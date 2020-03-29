@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gradeList</title>
+</head>
+<body>
+    <h4>
+        <ul>
+            {% for grade in grades %}
+                <li>
+                    <a href="{% url "stu_class:showGrade" grade.id %}/">{{ forloop.counter }} : {{ grade.g_name }}</a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </h4>
+</body>
+</html>

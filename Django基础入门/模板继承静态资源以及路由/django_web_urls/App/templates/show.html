@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show</title>
+</head>
+<body>
+    {% ifequal name age %}
+        <a href="">走！去瞅瞅</a>
+    {% url "app:show" %}
+    {% else %}
+        <h2>hello:{{ name }}</h2>
+        <h2>age: {{ age }}</h2>
+    {% endifequal %}
+</body>
+</html>

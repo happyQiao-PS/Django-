@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+</head>
+<body>
+    <h1>welcome to the choice menu</h1>
+    <hr>
+    <ul>
+        {% for foo in grade %}
+            <li>
+                    <a href="../showclass{{ foo.id }}">
+                        {{ foo.g_name }}
+                    </a>
+            </li>
+        {% endfor %}
+
+    </ul>
+
+</body>
+</html>

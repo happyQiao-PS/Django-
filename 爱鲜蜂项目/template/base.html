@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% block ext_css %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{% static "staticfile/css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "staticfile/css/bootstrap.css" %}">
+</head>
+<body>
+    {#专门用来给后面的模板继承使用的#}
+    <script type="text/javascript" src="{% static "staticfile/js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "staticfile/js/bootstrap.js" %}"></script>
+    <script type="text/javascript" src="{% static "staticfile/js/base.js" %}"></script>
+    {% block ext_js %}
+
+    {% endblock %}
+    {% block ext_header %}
+
+    {% endblock %}
+
+    {% block ext_content %}
+
+    {% endblock %}
+
+    {% block ext_footer %}
+
+    {% endblock %}
+
+</body>
+</html>

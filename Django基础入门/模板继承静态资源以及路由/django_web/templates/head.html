@@ -1,0 +1,11 @@
+{% block header %}
+    <h3>我是页头，我来自head.html</h3>
+{% endblock %}
+{% load static %}
+{% block css_view %}
+    <link rel="stylesheet" href="{% static "css/demo1.css"%}">
+{% endblock %}
+
+{% block css_p%}
+    <link rel="stylesheet" href="{% static "css/demo2.css"%}">
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base_main.html" %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "/projectfile/home/css/home.css" %}">
+    <link rel="stylesheet" href="{% static "/staticfile/css/swiper.css" %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "staticfile/js/swiper.jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "projectfile/home/js/home.js" %}"></script>
+{% endblock %}
+
+{% block ext_content %}
+    {{ block.super }}
+    <div id="home">
+        <div  class="swiper-container" id="topSwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <a href="#">
+                        <img  src="{% static "projectfile/home/pic/2.jpeg" %}" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#">
+                        <img  src="{% static "projectfile/home/pic/1.jpeg" %}" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#">
+                        <img  src="{% static "projectfile/home/pic/3.jpeg" %}" alt="">
+                    </a>
+                </div>
+
+                <div id="swiperMenu"></div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

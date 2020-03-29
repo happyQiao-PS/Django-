@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create</title>
+</head>
+<body>
+    <form action="{% url "home:do_create_obj" %}" method="post">
+            <span>Username:</span><input type="text" name="username" placeholder="please input you username！">
+            <button>submit</button>
+
+    </form>
+</body>
+</html>

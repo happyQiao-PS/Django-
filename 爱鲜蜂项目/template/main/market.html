@@ -1,0 +1,109 @@
+{% extends "base_main.html" %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "/projectfile/market/css/market.css" %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "/projectfile/market/js/market.js" %}"></script>
+{% endblock %}
+
+{% block ext_content %}
+    {{ block.super }}
+    <div id="market">
+        {#        左侧导航#}
+        <aside>
+            <ul>
+                {% for type in types %}
+
+                    {% ifequal typeid type.typeid %}
+                        <li class="yellowSlide">
+                            <a href="{% url "axf:market" %}?typeid={{ type.typeid }}">{{ type.typename }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url "axf:market" %}?typeid={{ type.typeid }}">{{ type.typename }}</a>
+                        </li>
+                    {% endifequal %}
+                {% endfor %}
+            </ul>
+        </aside>
+        {#        右侧区域#}
+        <div>
+            <section>
+                <nav>
+                    <ul>
+                        <li id="display-child">
+                            <span>全部分类<span id="icon_left" class="glyphicon glyphicon-chevron-down"></span></span>
+                        </li>
+                        <li id="display-order">
+                            <span>商品排序<span id="icon_right" class="glyphicon glyphicon-chevron-down"></span></span>
+                        </li>
+                    </ul>
+                </nav>
+                <menu>
+                    <div id="type_item">
+                        <div>
+                            {% for child_item in child_item_list %}
+                                <a href="{% url "axf:market" %}?typeid={{ typeid }}&&cid={{ child_item.1 }}">
+                                    {% ifequal cid child_item.1 %}
+                                        <button class="btn-success">{{ child_item.0 }}</button>
+                                        {% else %}
+                                        <button class="btn-default">{{ child_item.0 }}</button>
+                                    {% endifequal %}
+
+                                </a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <div id="order_item">
+                        <div>
+                            {% for order_way in order_way_list %}
+                                {% ifequal order_way.1 order %}
+                                    <a href="{% url "axf:market" %}?typeid={{ typeid }}&&cid={{ cid }}&&order={{ order_way.1 }}"><button class="btn-success">{{ order_way.0 }}</button></a>
+                                {% else %}
+                                    <a href="{% url "axf:market" %}?typeid={{ typeid }}&&cid={{ cid }}&&order={{ order_way.1 }}"><button class="btn-default">{{ order_way.0 }}</button></a>
+                                {% endifequal %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <ul>
+                        {#                        https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3507028413,2530873393&fm=26&gp=0.jpg#}
+                        {% for good in goods %}
+                            <li>
+                                <a href="#">
+                                    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3507028413,2530873393&fm=26&gp=0.jpg"
+                                         alt="{{ goods.productlongname }}">
+                                    <div class="shoppingInfo">
+                                        <h6>{{ good.productlongname }}</h6>
+                                        <p class="detailTag">
+                                            <span>精选</span>
+                                            <span></span>
+                                        </p>
+                                        <p class="unit">{{ good.specifics }}</p>
+                                        <p class="price">
+                                            <span>¥{{ good.price }}</span>
+                                            <s>{{ good.marketprice }}</s>
+                                        </p>
+                                    </div>
+                                </a>
+
+                                <section>
+                                    <button goodid="{{ good.id }}" class="subShopping">－</button>
+                                    <span>0</span>
+                                    <button goodid="{{ good.id }}" class="addShopping" goodsid="{{ goods.id }}">＋</button>
+                                </section>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </menu>
+            </section>
+        </div>
+    </div>
+{% endblock %}

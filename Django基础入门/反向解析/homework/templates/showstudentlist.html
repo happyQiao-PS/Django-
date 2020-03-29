@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>showstudentlist</title>
+</head>
+<body>
+<h2>
+    <ul>
+        {% for student in students %}
+            <li>
+                <a href="{% url "home:getstudent" student.id %}">
+                    {{ student.s_name }}
+                </a>
+            </li>
+            {% empty %}
+                    <h2>空空如也！快去添加一点数据吧！</h2>
+            {% endfor %}
+    </ul>
+</h2>
+<br>
+<hr>
+<br>
+<form action="{% url "home:addstudent"  %}" method="get">
+    名称：<input type="text" name="name">
+    性别：<select name="sex">
+    <option name="男" value="男">男</option>
+    <option name="女"　value="女">女</option>
+</select>　
+    年龄：<input type="number" name="age">
+    爱好：<input type="text" name="hobby">
+    班级：<select name="grade">
+            {% for foo in grades_name %}
+                <option name="{{ foo.g_name }}" value="{{ foo.g_name }}">{{ foo.g_name }}</option>
+            {% endfor %}
+        </select>
+    <input type="submit" ,value="添加学生">
+</form>
+<a href="{% url "home:showgradelist" %}">点击返回上一级</a>
+
+</body>
+</html>

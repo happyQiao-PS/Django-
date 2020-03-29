@@ -1,0 +1,49 @@
+{% extends "base_user.html" %}
+{% load static %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "projectfile/user/js/register.js" %}"></script>
+{% endblock %}
+
+{#{% block ext_css %}#}
+{#    {{ block.super }}#}
+{#    <link rel="stylesheet" href="{% static "projectfile/user/css/base_user.css" %}">#}
+{#{% endblock %}#}
+
+{% block ext_content %}
+    {{ block.super }}
+
+    <form id="form-register" onsubmit="return check()" enctype="multipart/form-data" method="post" action="{% url "axf:register" %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username_input">用户名</label>
+            <span class="username_OK">用户名可用</span>
+            <span class="username_NO">用户名不可用</span>
+            <input name="username" type="text" class="form-control" id="username_input" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">邮箱</label>
+            <span class="email_OK">这个邮箱可以使用</span>
+            <span class="email_NO">这个邮箱不可使用</span>
+            <input type="email" name="email" class="form-control" id="email_input" placeholder="请输入您的邮箱">
+        </div>
+        <div class="form-group">
+            <label for="password_input_1">密码</label>
+            <input type="password" class="form-control" id="password_input_1" placeholder="请输入你的密码">
+        </div>
+         <div class="form-group">
+             <label for="password_input_2">再次输入确认密码</label>
+             <span id="password_OK">密码可以使用</span>
+             <span id="password_NO">两次密码不一致</span>
+             <input type="password" name="password" class="form-control" id="password_input_2" placeholder="再次输入密码">
+        </div>
+        <div class="form-group">
+            <label for="img_file_input">点击上传头像</label>
+            <span class="icon_OK">必须上传头像！</span>
+            <input name="icon" type="file" id="img_file_input">
+        </div>
+        <button type="submit" class="btn btn-info">提交</button>
+    </form>
+
+{% endblock %}
